@@ -1,6 +1,6 @@
 /*
 Name: MIDI Controller Helper-384
-Author: Marty Opsahl
+Author: Marty and Mega Pixel Music Lab
 
 Purpose:
 A tool to help map MIDI controllers to plugins.
@@ -32,6 +32,31 @@ The Solo and Rec buttons can be used as either Modifiers or Parameters.
 To setup modifiers add the following lines below.
 mode.modifiers.push(newModifier( BUTTONCC, CHANNEL, ALT, DEFAULTALT, [CC1, CC2, CC3...]));
 
+Contacts and sites:
+megapixelmusiclab.com
+marty@megapixelmusiclab.com
+https://opengameart.org/users/mega-pixel-music-lab
+https://soundcloud.com/megapixelmusic
+https://megapixelmusiclab.bandcamp.com
+https://www.youtube.com/channel/UCZBTcrBs8G8uBFJfUzGln0w
+
+Copyright (c) Martin Opsahl and Mega Pixel Music Lab
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 var PluginParameters = [];
 //ppMapNames contains the PluginParameter name to use. The first index is the midi channel.
@@ -149,11 +174,6 @@ function createControls() {
 	let parameterNumber = 1;
 	let buttonName = "";
 	
-	PluginParameters.push({name:"**Special Events**", type:"text"});
-	for(let i = 0; i < 2;i++) {
-		PluginParameters.push({name:"Setup "+(i+1), type:"target"})
-	}
-	
 	PluginParameters.push({name:"**Default**", type:"text"});
 	for(let i = 0; i<8; i++){
 		PluginParameters.push({name:parameterNumber+": Knob"+(i+1), type:"target"});
@@ -225,12 +245,9 @@ function createControls() {
 			}
 			else if(PluginParameters[index].name.includes("Solo"+(group+1))){
 				soloButtons[group].push(PluginParameters[index].name);
-				
-				[51+group] = PluginParameters[index].name;
 			}
 			else if(PluginParameters[index].name.includes("Rec"+(group+1))){
 				recButtons[group].push(PluginParameters[index].name);
-				recParameterName[71+group] = PluginParameters[index].name;
 			}
 			else if(PluginParameters[index].name.includes("Select"+(group+1))){
 				selectButtons[group].push(PluginParameters[index].name);
